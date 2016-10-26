@@ -1,0 +1,4 @@
+main: de.simonsator.clans.ClansMainSpigot
+name: Clans-Spigot-Part
+version: ${project.version}
+author: Simonsator
