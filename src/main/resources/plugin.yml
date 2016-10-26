@@ -1,4 +1,5 @@
-main: de.simonsator.clans.ClansMainSpigot
+main: de.simonsator.partyandfriends.spigot.clans.ClansMainSpigot
 name: Clans-Spigot-Part
 version: ${project.version}
 author: Simonsator
+depend: [FriendsAPIForPartyAndFriends]
