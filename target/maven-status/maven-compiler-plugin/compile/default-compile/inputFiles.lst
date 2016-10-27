@@ -1,0 +1,14 @@
+/Users/simonbrungs/Documents/GitHub/Java/Minecraft/Clans-Spigot-Part/src/main/java/de/simonsator/partyandfriends/spigot/clans/clans/clan/MySQLClan.java
+/Users/simonbrungs/Documents/GitHub/Java/Minecraft/Clans-Spigot-Part/src/main/java/de/simonsator/partyandfriends/spigot/clans/api/Clan.java
+/Users/simonbrungs/Documents/GitHub/Java/Minecraft/Clans-Spigot-Part/src/main/java/de/simonsator/partyandfriends/spigot/main/Main.java
+/Users/simonbrungs/Documents/GitHub/Java/Minecraft/Clans-Spigot-Part/src/main/java/de/simonsator/partyandfriends/spigot/clans/clans/clansmanager/MySQLClansManager.java
+/Users/simonbrungs/Documents/GitHub/Java/Minecraft/Clans-Spigot-Part/src/main/java/de/simonsator/partyandfriends/spigot/clans/ClansMainSpigot.java
+/Users/simonbrungs/Documents/GitHub/Java/Minecraft/Clans-Spigot-Part/src/main/java/de/simonsator/partyandfriends/spigot/api/pafplayers/PAFPlayerClass.java
+/Users/simonbrungs/Documents/GitHub/Java/Minecraft/Clans-Spigot-Part/src/main/java/de/simonsator/partyandfriends/spigot/api/pafplayers/PAFPlayerManager.java
+/Users/simonbrungs/Documents/GitHub/Java/Minecraft/Clans-Spigot-Part/src/main/java/de/simonsator/partyandfriends/spigot/api/pafplayers/PAFPlayer.java
+/Users/simonbrungs/Documents/GitHub/Java/Minecraft/Clans-Spigot-Part/src/main/java/de/simonsator/partyandfriends/spigot/pafplayers/manager/PAFPlayerManagerMySQL.java
+/Users/simonbrungs/Documents/GitHub/Java/Minecraft/Clans-Spigot-Part/src/main/java/de/simonsator/partyandfriends/spigot/clans/api/ClansManager.java
+/Users/simonbrungs/Documents/GitHub/Java/Minecraft/Clans-Spigot-Part/src/main/java/de/simonsator/partyandfriends/spigot/mysql/MySQL.java
+/Users/simonbrungs/Documents/GitHub/Java/Minecraft/Clans-Spigot-Part/src/main/java/de/simonsator/partyandfriends/spigot/clans/api/ClanPlayer.java
+/Users/simonbrungs/Documents/GitHub/Java/Minecraft/Clans-Spigot-Part/src/main/java/de/simonsator/partyandfriends/spigot/pafplayers/mysql/PAFPlayerMySQL.java
+/Users/simonbrungs/Documents/GitHub/Java/Minecraft/Clans-Spigot-Part/src/main/java/de/simonsator/partyandfriends/spigot/clans/clans/clanplayers/MySQLClanPlayer.java
