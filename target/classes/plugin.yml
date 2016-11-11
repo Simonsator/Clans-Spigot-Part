@@ -1,5 +1,5 @@
 main: de.simonsator.partyandfriends.spigot.clans.ClansMainSpigot
 name: Clans-Spigot-Part
-version: 1.2.0
+version: 1.0.1
 author: Simonsator
 depend: [FriendsAPIForPartyAndFriends]
