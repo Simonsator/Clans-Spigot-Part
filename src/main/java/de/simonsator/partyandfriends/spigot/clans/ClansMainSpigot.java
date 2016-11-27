@@ -1,11 +1,14 @@
 package de.simonsator.partyandfriends.spigot.clans;
 
-import java.io.ByteArrayInputStream;
-import java.io.DataInputStream;
-import java.io.IOException;
-import java.util.HashMap;
-import java.util.UUID;
-
+import com.google.gson.Gson;
+import com.google.gson.JsonObject;
+import de.simonsator.partyandfriends.clan.ClanConnection;
+import de.simonsator.partyandfriends.spigot.api.pafplayers.PAFPlayer;
+import de.simonsator.partyandfriends.spigot.api.pafplayers.PAFPlayerManager;
+import de.simonsator.partyandfriends.spigot.clans.api.Clan;
+import de.simonsator.partyandfriends.spigot.clans.api.ClansManager;
+import de.simonsator.partyandfriends.spigot.clans.clans.clansmanager.MySQLClansManager;
+import de.simonsator.partyandfriends.spigot.main.Main;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
@@ -16,16 +19,11 @@ import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.plugin.messaging.PluginMessageListener;
 
-import com.google.gson.Gson;
-import com.google.gson.JsonObject;
-
-import de.simonsator.partyandfriends.clan.ClanConnection;
-import de.simonsator.partyandfriends.spigot.api.pafplayers.PAFPlayer;
-import de.simonsator.partyandfriends.spigot.api.pafplayers.PAFPlayerManager;
-import de.simonsator.partyandfriends.spigot.clans.api.Clan;
-import de.simonsator.partyandfriends.spigot.clans.api.ClansManager;
-import de.simonsator.partyandfriends.spigot.clans.clans.clansmanager.MySQLClansManager;
-import de.simonsator.partyandfriends.spigot.main.Main;
+import java.io.ByteArrayInputStream;
+import java.io.DataInputStream;
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.UUID;
 
 /**
  * @author simonbrungs
@@ -66,7 +64,7 @@ public class ClansMainSpigot extends JavaPlugin implements Listener, PluginMessa
 		return instance;
 	}
 
-	@EventHandler(priority = EventPriority.LOWEST)
+	@EventHandler(priority = EventPriority.LOW)
 	public void onJoin(PlayerJoinEvent pEvent) {
 		addClanTag(pEvent.getPlayer());
 	}
@@ -101,26 +99,25 @@ public class ClansMainSpigot extends JavaPlugin implements Listener, PluginMessa
 	/**
 	 * Decides what should be done
 	 *
-	 * @param pReceived
-	 *            The Json which was send by the BungeeCord.
+	 * @param pReceived The Json which was send by the BungeeCord.
 	 */
 	private void executeTask(JsonObject pReceived) {
 		Player player = Bukkit.getPlayer(pReceived.get("receiverName").getAsString());
 		if (player == null)
 			return;
 		switch (pReceived.get("task").getAsString()) {
-		case "InformAboutNewClan":
-			addClanTag(player);
-			break;
-		case "InformAboutClanLeave":
-			setOriginalDisplayName(player);
-			break;
-		case "InformAboutClanTagChange":
-			setOriginalDisplayName(player);
-			addClanTag(player);
-			break;
-		default:
-			break;
+			case "InformAboutNewClan":
+				addClanTag(player);
+				break;
+			case "InformAboutClanLeave":
+				setOriginalDisplayName(player);
+				break;
+			case "InformAboutClanTagChange":
+				setOriginalDisplayName(player);
+				addClanTag(player);
+				break;
+			default:
+				break;
 		}
 	}
 
