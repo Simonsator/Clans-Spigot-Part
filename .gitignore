@@ -81,3 +81,5 @@ target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst
 *.class
 
 target/classes/plugin.yml
+
+target/classes/config.yml
