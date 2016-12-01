@@ -24,6 +24,8 @@ import java.io.DataInputStream;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.UUID;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * @author simonbrungs
@@ -32,11 +34,12 @@ import java.util.UUID;
 public class ClansMainSpigot extends JavaPlugin implements Listener, PluginMessageListener {
 	private ClanConnection connection;
 	private static ClansMainSpigot instance;
-	private String prefix;
-	private String sufix;
+	private String newDisplayName;
 	private HashMap<UUID, String> originalDisplayNames = new HashMap<>();
 	private static final String CHANNEL = "PartyAndFriends";
 	private final Gson GSON = new Gson();
+	private final Pattern CLAN_PATTERN = Pattern.compile("[%CLAN_TAG%]", Pattern.LITERAL);
+	private final Pattern PLAYER_DISPLAY_NAME_PATTERN = Pattern.compile("[%PLAYER_DISPLAY_NAME%]", Pattern.LITERAL);
 
 	@Override
 	public void onEnable() {
@@ -49,10 +52,10 @@ public class ClansMainSpigot extends JavaPlugin implements Listener, PluginMessa
 			if (getConfig().isString(path))
 				getConfig().set(path, ChatColor.translateAlternateColorCodes('&', getConfig().getString(path)));
 		if (!getConfig().getBoolean("API-Only")) {
-			prefix = getConfig().getString("prefix-of-clan-prefix");
-			sufix = getConfig().getString("sufix-of-clan-prefix");
+			newDisplayName = getConfig().getString("new-display-name");
 			getServer().getPluginManager().registerEvents(this, this);
 			getServer().getMessenger().registerIncomingPluginChannel(this, "PartyAndFriends", this);
+			System.out.println(newDisplayName);
 		}
 	}
 
@@ -75,7 +78,9 @@ public class ClansMainSpigot extends JavaPlugin implements Listener, PluginMessa
 		if (player != null) {
 			Clan clan = ClansManager.getInstance().getClan(player);
 			if (clan != null)
-				pPlayer.setDisplayName(prefix + clan.getClanTag() + sufix + pPlayer.getDisplayName());
+				pPlayer.setDisplayName(CLAN_PATTERN.matcher(PLAYER_DISPLAY_NAME_PATTERN.matcher(newDisplayName)
+						.replaceAll(Matcher.quoteReplacement(pPlayer.getDisplayName()))).
+						replaceAll(Matcher.quoteReplacement(clan.getClanTag())));
 		}
 	}
 

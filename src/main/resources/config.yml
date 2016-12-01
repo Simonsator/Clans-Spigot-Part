@@ -1,3 +1,2 @@
 API-Only: false
-prefix-of-clan-prefix: '&e<'
-sufix-of-clan-prefix: '>&r'
+new-display-name: '&e<[%CLAN_TAG%]> [%PLAYER_DISPLAY_NAME%]&r'
