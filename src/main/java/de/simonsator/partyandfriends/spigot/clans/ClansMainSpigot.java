@@ -55,7 +55,6 @@ public class ClansMainSpigot extends JavaPlugin implements Listener, PluginMessa
 			newDisplayName = getConfig().getString("new-display-name");
 			getServer().getPluginManager().registerEvents(this, this);
 			getServer().getMessenger().registerIncomingPluginChannel(this, "PartyAndFriends", this);
-			System.out.println(newDisplayName);
 		}
 	}
 
