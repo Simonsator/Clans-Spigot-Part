@@ -3,3 +3,4 @@ name: Clans-Spigot-Part
 version: ${project.version}
 author: Simonsator
 depend: [FriendsAPIForPartyAndFriends]
+softdepend: [MVdWPlaceholderAPI]

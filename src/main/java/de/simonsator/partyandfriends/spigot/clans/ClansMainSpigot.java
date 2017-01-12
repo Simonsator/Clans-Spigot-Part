@@ -51,6 +51,8 @@ public class ClansMainSpigot extends JavaPlugin implements Listener, PluginMessa
 		for (String path : getConfig().getKeys(true))
 			if (getConfig().isString(path))
 				getConfig().set(path, ChatColor.translateAlternateColorCodes('&', getConfig().getString(path)));
+		if (Bukkit.getPluginManager().isPluginEnabled("MVdWPlaceholderAPI"))
+			new ClansPlaceHolder(this);
 		if (!getConfig().getBoolean("API-Only")) {
 			newDisplayName = getConfig().getString("new-display-name");
 			getServer().getPluginManager().registerEvents(this, this);
