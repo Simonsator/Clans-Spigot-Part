@@ -3,10 +3,7 @@ package de.simonsator.partyandfriends.clan;
 import de.simonsator.partyandfriends.communication.sql.MySQLData;
 import de.simonsator.partyandfriends.communication.sql.SQLCommunication;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.ArrayList;
 
 public class ClanConnection extends SQLCommunication {
@@ -113,16 +110,18 @@ public class ClanConnection extends SQLCommunication {
 		Connection con = getConnection();
 		ResultSet rs = null;
 		Statement stmt = null;
+		PreparedStatement prepStmt = null;
 		try {
-			rs = (stmt = con.createStatement())
-					.executeQuery("select id from " + DATABASE + ".`" + TABLE_PREFIX + "clan` WHERE clan_name='" + pClanName + "' LIMIT 1");
+			prepStmt = con.prepareStatement("select id from " + DATABASE + ".`" + TABLE_PREFIX + "clan` WHERE clan_name=? LIMIT 1");
+			prepStmt.setString(1, pClanName);
+			rs = prepStmt.executeQuery();
 			if (rs.next()) {
 				return rs.getInt("id");
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
-			close(rs, stmt);
+			close(rs, stmt, prepStmt);
 		}
 		return 0;
 	}
