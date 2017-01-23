@@ -3,6 +3,8 @@ package de.simonsator.partyandfriends.spigot.clans;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import de.simonsator.partyandfriends.clan.ClanConnection;
+import de.simonsator.partyandfriends.placeholder.mvdw.ClansPlaceHolderDefault;
+import de.simonsator.partyandfriends.placeholder.mvdw.ClansPlaceHolderWithSpace;
 import de.simonsator.partyandfriends.spigot.api.pafplayers.PAFPlayer;
 import de.simonsator.partyandfriends.spigot.api.pafplayers.PAFPlayerManager;
 import de.simonsator.partyandfriends.spigot.clans.api.Clan;
@@ -51,8 +53,10 @@ public class ClansMainSpigot extends JavaPlugin implements Listener, PluginMessa
 		for (String path : getConfig().getKeys(true))
 			if (getConfig().isString(path))
 				getConfig().set(path, ChatColor.translateAlternateColorCodes('&', getConfig().getString(path)));
-		if (Bukkit.getPluginManager().isPluginEnabled("MVdWPlaceholderAPI"))
-			new ClansPlaceHolder(this);
+		if (Bukkit.getPluginManager().isPluginEnabled("MVdWPlaceholderAPI")) {
+			new ClansPlaceHolderDefault(this);
+			new ClansPlaceHolderWithSpace(this);
+		}
 		if (!getConfig().getBoolean("API-Only")) {
 			newDisplayName = getConfig().getString("new-display-name");
 			getServer().getPluginManager().registerEvents(this, this);
