@@ -1,9 +1,9 @@
-package de.simonsator.partyandfriends.placeholder.mvdw;
+package de.simonsator.partyandfriends.spigot.clans.placeholder.mvdw;
 
 import be.maximvdw.placeholderapi.PlaceholderAPI;
 import be.maximvdw.placeholderapi.PlaceholderReplaceEvent;
 import be.maximvdw.placeholderapi.PlaceholderReplacer;
-import de.simonsator.partyandfriends.placeholder.ClansPlaceHolder;
+import de.simonsator.partyandfriends.spigot.clans.placeholder.ClansPlaceHolder;
 import org.bukkit.plugin.Plugin;
 
 /**

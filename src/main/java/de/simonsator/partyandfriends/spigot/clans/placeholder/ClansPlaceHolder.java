@@ -1,4 +1,4 @@
-package de.simonsator.partyandfriends.placeholder;
+package de.simonsator.partyandfriends.spigot.clans.placeholder;
 
 import de.simonsator.partyandfriends.spigot.api.pafplayers.PAFPlayer;
 import de.simonsator.partyandfriends.spigot.api.pafplayers.PAFPlayerManager;
