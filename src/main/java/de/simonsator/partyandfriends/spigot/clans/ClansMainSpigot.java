@@ -3,13 +3,13 @@ package de.simonsator.partyandfriends.spigot.clans;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import de.simonsator.partyandfriends.clan.ClanConnection;
-import de.simonsator.partyandfriends.spigot.clans.placeholder.mvdw.ClansPlaceHolderDefault;
-import de.simonsator.partyandfriends.spigot.clans.placeholder.mvdw.ClansPlaceHolderWithSpace;
 import de.simonsator.partyandfriends.spigot.api.pafplayers.PAFPlayer;
 import de.simonsator.partyandfriends.spigot.api.pafplayers.PAFPlayerManager;
 import de.simonsator.partyandfriends.spigot.clans.api.Clan;
 import de.simonsator.partyandfriends.spigot.clans.api.ClansManager;
 import de.simonsator.partyandfriends.spigot.clans.clans.clansmanager.MySQLClansManager;
+import de.simonsator.partyandfriends.spigot.clans.placeholder.mvdw.ClansPlaceHolderCustomDesign;
+import de.simonsator.partyandfriends.spigot.clans.placeholder.mvdw.ClansPlaceHolderDefault;
 import de.simonsator.partyandfriends.spigot.main.Main;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -55,7 +55,7 @@ public class ClansMainSpigot extends JavaPlugin implements Listener, PluginMessa
 				getConfig().set(path, ChatColor.translateAlternateColorCodes('&', getConfig().getString(path)));
 		if (Bukkit.getPluginManager().isPluginEnabled("MVdWPlaceholderAPI")) {
 			new ClansPlaceHolderDefault(this);
-			new ClansPlaceHolderWithSpace(this);
+			new ClansPlaceHolderCustomDesign(this);
 		}
 		if (!getConfig().getBoolean("API-Only")) {
 			newDisplayName = getConfig().getString("new-display-name");
