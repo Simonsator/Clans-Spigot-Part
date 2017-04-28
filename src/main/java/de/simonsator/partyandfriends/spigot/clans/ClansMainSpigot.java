@@ -2,7 +2,6 @@ package de.simonsator.partyandfriends.spigot.clans;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
-import de.simonsator.partyandfriends.clan.ClanConnection;
 import de.simonsator.partyandfriends.spigot.api.pafplayers.PAFPlayer;
 import de.simonsator.partyandfriends.spigot.api.pafplayers.PAFPlayerManager;
 import de.simonsator.partyandfriends.spigot.clans.api.Clan;

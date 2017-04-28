@@ -9,6 +9,10 @@
 	<version>1.0.7</version>
 	<repositories>
 		<repository>
+			<id>spigot-repo</id>
+			<url>https://hub.spigotmc.org/nexus/content/repositories/snapshots/</url>
+		</repository>
+		<repository>
 			<id>ghac Repo</id>
 			<url>http://nexus.ghac.de/content/repositories/snapshots/</url>
 		</repository>
@@ -39,6 +43,11 @@
 			<groupId>be.maximvdw</groupId>
 			<artifactId>MVdWPlaceholderAPI</artifactId>
 			<version>1.0.2-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>org.bukkit</groupId>
+			<artifactId>bukkit</artifactId>
+			<version>1.8-R0.1-SNAPSHOT</version>
 		</dependency>
 	</dependencies>
 	<build>

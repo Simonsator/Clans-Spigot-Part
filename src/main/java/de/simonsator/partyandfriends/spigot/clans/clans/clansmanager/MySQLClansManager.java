@@ -7,7 +7,7 @@ import de.simonsator.partyandfriends.spigot.clans.api.ClanPlayer;
 import de.simonsator.partyandfriends.spigot.clans.api.ClansManager;
 import de.simonsator.partyandfriends.spigot.clans.clans.clan.MySQLClan;
 import de.simonsator.partyandfriends.spigot.clans.clans.clanplayers.MySQLClanPlayer;
-import de.simonsator.partyandfriends.clan.ClanConnection;
+import de.simonsator.partyandfriends.spigot.clans.ClanConnection;
 import de.simonsator.partyandfriends.spigot.api.pafplayers.PAFPlayer;
 import de.simonsator.partyandfriends.spigot.pafplayers.mysql.PAFPlayerMySQL;
 

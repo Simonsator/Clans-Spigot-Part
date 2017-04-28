@@ -1,4 +1,4 @@
-package de.simonsator.partyandfriends.clan;
+package de.simonsator.partyandfriends.spigot.clans;
 
 import de.simonsator.partyandfriends.communication.sql.MySQLData;
 import de.simonsator.partyandfriends.communication.sql.SQLCommunication;
