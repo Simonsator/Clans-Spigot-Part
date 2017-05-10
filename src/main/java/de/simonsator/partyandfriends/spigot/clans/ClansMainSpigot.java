@@ -9,6 +9,7 @@ import de.simonsator.partyandfriends.spigot.clans.api.ClansManager;
 import de.simonsator.partyandfriends.spigot.clans.clans.clansmanager.MySQLClansManager;
 import de.simonsator.partyandfriends.spigot.clans.placeholder.mvdw.ClansPlaceHolderCustomDesign;
 import de.simonsator.partyandfriends.spigot.clans.placeholder.mvdw.ClansPlaceHolderDefault;
+import de.simonsator.partyandfriends.spigot.clans.placeholder.placeholderapi.ClansPlaceHolderAPIPlaceHolder;
 import de.simonsator.partyandfriends.spigot.main.Main;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -56,6 +57,8 @@ public class ClansMainSpigot extends JavaPlugin implements Listener, PluginMessa
 			new ClansPlaceHolderDefault(this);
 			new ClansPlaceHolderCustomDesign(this);
 		}
+		if (Bukkit.getPluginManager().isPluginEnabled("PlaceholderAPI"))
+			new ClansPlaceHolderAPIPlaceHolder(this);
 		if (!getConfig().getBoolean("API-Only")) {
 			newDisplayName = getConfig().getString("new-display-name");
 			getServer().getPluginManager().registerEvents(this, this);
