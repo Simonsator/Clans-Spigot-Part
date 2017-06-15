@@ -19,6 +19,7 @@ public class ClansPlaceHolderAPIPlaceHolder extends EZPlaceholderHook {
 
 	public ClansPlaceHolderAPIPlaceHolder(Plugin pPlugin) {
 		super(pPlugin, "clantagprovider");
+		hook();
 		CLAN_MATCHER = Pattern.compile("[%CLAN_TAG%]", Pattern.LITERAL).matcher(pPlugin.getConfig().getString("PlaceholderCustomDesign"));
 	}
 
