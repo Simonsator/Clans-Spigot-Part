@@ -29,9 +29,9 @@ public class ClansPlaceHolderAPIPlaceHolder extends EZPlaceholderHook {
 			return "";
 		switch (pIdentifier) {
 			case "clantag":
-				return clanTagProvider.getClanTag(pPlayer.getUniqueId());
+				return clanTagProvider.getClanTag(pPlayer.getName());
 			case "clantag_custom_design":
-				String clanTag = clanTagProvider.getClanTag(pPlayer.getUniqueId());
+				String clanTag = clanTagProvider.getClanTag(pPlayer.getName());
 				if (!clanTag.isEmpty())
 					return CLAN_MATCHER.replaceFirst(clanTag);
 				return clanTag;

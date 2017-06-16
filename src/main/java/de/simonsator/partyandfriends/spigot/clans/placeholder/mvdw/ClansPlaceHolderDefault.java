@@ -17,7 +17,7 @@ public class ClansPlaceHolderDefault extends ClansPlaceHolder implements Placeho
 
 	@Override
 	public String onPlaceholderReplace(PlaceholderReplaceEvent pEvent) {
-		return getClanTag(pEvent.getOfflinePlayer().getUniqueId());
+		return getClanTag(pEvent.getOfflinePlayer().getName());
 	}
 
 }

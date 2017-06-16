@@ -23,7 +23,7 @@ public class ClansPlaceHolderCustomDesign extends ClansPlaceHolder implements Pl
 
 	@Override
 	public String onPlaceholderReplace(PlaceholderReplaceEvent pEvent) {
-		String clanTag = getClanTag(pEvent.getOfflinePlayer().getUniqueId());
+		String clanTag = getClanTag(pEvent.getOfflinePlayer().getName());
 		if (!clanTag.isEmpty())
 			return CLAN_MATCHER.replaceFirst(clanTag);
 		return clanTag;
