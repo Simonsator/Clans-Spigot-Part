@@ -1,3 +1,5 @@
 API-Only: false
 new-display-name: '&e<[%CLAN_TAG%]> [%PLAYER_DISPLAY_NAME%]&r'
-PlaceholderCustomDesign: '&e<[%CLAN_TAG%]> '
+PlaceholderCustomDesign:
+  Placeholder: '&e<[%CLAN_TAG%]> '
+  OnEmpty: ''

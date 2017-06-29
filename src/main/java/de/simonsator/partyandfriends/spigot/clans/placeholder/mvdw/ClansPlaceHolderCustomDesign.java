@@ -15,10 +15,12 @@ import java.util.regex.Pattern;
  */
 public class ClansPlaceHolderCustomDesign extends ClansPlaceHolder implements PlaceholderReplacer {
 	private final Matcher CLAN_MATCHER;
+	private final String ON_EMPTY;
 
 	public ClansPlaceHolderCustomDesign(Plugin pPlugin) {
 		PlaceholderAPI.registerPlaceholder(pPlugin, "clantag_custom_design", this);
-		CLAN_MATCHER = Pattern.compile("[%CLAN_TAG%]", Pattern.LITERAL).matcher(pPlugin.getConfig().getString("PlaceholderCustomDesign"));
+		CLAN_MATCHER = Pattern.compile("[%CLAN_TAG%]", Pattern.LITERAL).matcher(pPlugin.getConfig().getString("PlaceholderCustomDesign.Placeholder"));
+		ON_EMPTY = pPlugin.getConfig().getString("PlaceholderCustomDesign.OnEmpty");
 	}
 
 	@Override
@@ -26,7 +28,7 @@ public class ClansPlaceHolderCustomDesign extends ClansPlaceHolder implements Pl
 		String clanTag = getClanTag(pEvent.getOfflinePlayer().getName());
 		if (!clanTag.isEmpty())
 			return CLAN_MATCHER.replaceFirst(clanTag);
-		return clanTag;
+		return ON_EMPTY;
 	}
 
 }

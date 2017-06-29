@@ -16,11 +16,13 @@ public class ClansPlaceHolderAPIPlaceHolder extends EZPlaceholderHook {
 	private ClansPlaceHolder clanTagProvider = new ClansPlaceHolder() {
 	};
 	private final Matcher CLAN_MATCHER;
+	private final String ON_EMPTY;
 
 	public ClansPlaceHolderAPIPlaceHolder(Plugin pPlugin) {
 		super(pPlugin, "clantagprovider");
 		hook();
-		CLAN_MATCHER = Pattern.compile("[%CLAN_TAG%]", Pattern.LITERAL).matcher(pPlugin.getConfig().getString("PlaceholderCustomDesign"));
+		CLAN_MATCHER = Pattern.compile("[%CLAN_TAG%]", Pattern.LITERAL).matcher(pPlugin.getConfig().getString("PlaceholderCustomDesign.Placeholder"));
+		ON_EMPTY = pPlugin.getConfig().getString("PlaceholderCustomDesign.OnEmpty");
 	}
 
 	@Override
@@ -34,7 +36,7 @@ public class ClansPlaceHolderAPIPlaceHolder extends EZPlaceholderHook {
 				String clanTag = clanTagProvider.getClanTag(pPlayer.getName());
 				if (!clanTag.isEmpty())
 					return CLAN_MATCHER.replaceFirst(clanTag);
-				return clanTag;
+				return ON_EMPTY;
 			default:
 				return null;
 		}
