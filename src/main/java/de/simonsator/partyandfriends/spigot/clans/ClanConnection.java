@@ -21,7 +21,7 @@ public class ClanConnection extends SQLCommunication {
 		Statement stmt = null;
 		try {
 			rs = (stmt = con.createStatement())
-					.executeQuery("select clan_id from " + DATABASE + ".`" + TABLE_PREFIX + "clans_request_assignment` WHERE player_id='"
+					.executeQuery("select clan_id from `" + DATABASE + "`.`" + TABLE_PREFIX + "clans_request_assignment` WHERE player_id='"
 							+ pPlayerID + "' AND clan_id='" + pClanID + "' LIMIT 1");
 			if (rs.next())
 				return true;
@@ -39,8 +39,8 @@ public class ClanConnection extends SQLCommunication {
 		Statement stmt = null;
 		ArrayList<Integer> clanRequests = new ArrayList<>();
 		try {
-			rs = (stmt = con.createStatement()).executeQuery("select clan_id from " + DATABASE
-					+ ".`" + TABLE_PREFIX + "clans_request_assignment` WHERE player_id='" + pPlayerID + "'");
+			rs = (stmt = con.createStatement()).executeQuery("select clan_id from `" + DATABASE
+					+ "`.`" + TABLE_PREFIX + "clans_request_assignment` WHERE player_id='" + pPlayerID + "'");
 			while (rs.next())
 				clanRequests.add(rs.getInt("clan_id"));
 		} catch (SQLException e) {
@@ -56,8 +56,8 @@ public class ClanConnection extends SQLCommunication {
 		ResultSet rs = null;
 		Statement stmt = null;
 		try {
-			rs = (stmt = con.createStatement()).executeQuery("select clan_id from " + DATABASE
-					+ ".`" + TABLE_PREFIX + "clans_request_assignment` WHERE player_id='" + pPlayerID + "' LIMIT 1");
+			rs = (stmt = con.createStatement()).executeQuery("select clan_id from `" + DATABASE
+					+ "`.`" + TABLE_PREFIX + "clans_request_assignment` WHERE player_id='" + pPlayerID + "' LIMIT 1");
 			if (rs.next())
 				return true;
 		} catch (SQLException e) {
@@ -74,8 +74,8 @@ public class ClanConnection extends SQLCommunication {
 		Statement stmt = null;
 		ArrayList<Integer> requested = new ArrayList<>();
 		try {
-			rs = (stmt = con.createStatement()).executeQuery("select player_id from " + DATABASE
-					+ ".`" + TABLE_PREFIX + "clans_request_assignment` WHERE clan_id='" + pClanID + "'");
+			rs = (stmt = con.createStatement()).executeQuery("select player_id from `" + DATABASE
+					+ "`.`" + TABLE_PREFIX + "clans_request_assignment` WHERE clan_id='" + pClanID + "'");
 			while (rs.next())
 				requested.add(rs.getInt("player_id"));
 		} catch (SQLException e) {
@@ -92,7 +92,7 @@ public class ClanConnection extends SQLCommunication {
 		Statement stmt = null;
 		try {
 			rs = (stmt = con.createStatement())
-					.executeQuery("select clan_name from " + DATABASE + ".`" + TABLE_PREFIX + "clan` WHERE id='" + pClanID + "' LIMIT 1");
+					.executeQuery("select clan_name from `" + DATABASE + "`.`" + TABLE_PREFIX + "clan` WHERE id='" + pClanID + "' LIMIT 1");
 			if (rs.next())
 				return rs.getString("clan_name");
 			else {
@@ -112,7 +112,7 @@ public class ClanConnection extends SQLCommunication {
 		Statement stmt = null;
 		PreparedStatement prepStmt = null;
 		try {
-			prepStmt = con.prepareStatement("select id from " + DATABASE + ".`" + TABLE_PREFIX + "clan` WHERE clan_name=? LIMIT 1");
+			prepStmt = con.prepareStatement("select id from `" + DATABASE + "`.`" + TABLE_PREFIX + "clan` WHERE clan_name=? LIMIT 1");
 			prepStmt.setString(1, pClanName);
 			rs = prepStmt.executeQuery();
 			if (rs.next()) {
@@ -133,7 +133,7 @@ public class ClanConnection extends SQLCommunication {
 		Statement stmt = null;
 		try {
 			rs = (stmt = con.createStatement()).executeQuery(
-					"select player_id, type from " + DATABASE + ".`" + TABLE_PREFIX + "clans_assignment` WHERE clan_id='" + pClanID + "'");
+					"select player_id, type from `" + DATABASE + "`.`" + TABLE_PREFIX + "clans_ assignment ` WHERE clan_id='" + pClanID + "'");
 			while (rs.next()) {
 				if (rs.getByte("type") == 0)
 					members.add(rs.getInt("player_id"));
@@ -153,7 +153,7 @@ public class ClanConnection extends SQLCommunication {
 		Statement stmt = null;
 		try {
 			rs = (stmt = con.createStatement()).executeQuery(
-					"select player_id, type from " + DATABASE + ".`" + TABLE_PREFIX + "clans_assignment` WHERE clan_id='" + pClanID + "' AND type='1'");
+					"select player_id, type from `" + DATABASE + "`.`" + TABLE_PREFIX + "clans_assignment` WHERE clan_id='" + pClanID + "' AND type='1'");
 			while (rs.next())
 				members.add(rs.getInt("player_id"));
 		} catch (SQLException e) {
@@ -169,8 +169,8 @@ public class ClanConnection extends SQLCommunication {
 		ResultSet rs = null;
 		Statement stmt = null;
 		try {
-			rs = (stmt = con.createStatement()).executeQuery("select type from " + DATABASE
-					+ ".`" + TABLE_PREFIX + "clans_assignment` WHERE clan_id='" + pClanID + "' AND player_id='" + pPlayerID + "' LIMIT 1");
+			rs = (stmt = con.createStatement()).executeQuery("select type from `" + DATABASE
+					+ "`.`" + TABLE_PREFIX + "clans_assignment` WHERE clan_id='" + pClanID + "' AND player_id='" + pPlayerID + "' LIMIT 1");
 			if (rs.next())
 				if (rs.getByte("type") == 1)
 					return true;
@@ -187,8 +187,8 @@ public class ClanConnection extends SQLCommunication {
 		ResultSet rs = null;
 		Statement stmt = null;
 		try {
-			rs = (stmt = con.createStatement()).executeQuery("select player_id from " + DATABASE
-					+ ".`" + TABLE_PREFIX + "clans_assignment` WHERE clan_id='" + pClanID + "' AND player_id='" + pPlayerID + "' LIMIT 1");
+			rs = (stmt = con.createStatement()).executeQuery("select player_id from `" + DATABASE
+					+ "`.`" + TABLE_PREFIX + "clans_assignment` WHERE clan_id='" + pClanID + "' AND player_id='" + pPlayerID + "' LIMIT 1");
 			if (rs.next())
 				return true;
 		} catch (SQLException e) {
@@ -206,7 +206,7 @@ public class ClanConnection extends SQLCommunication {
 		Statement stmt = null;
 		try {
 			rs = (stmt = con.createStatement()).executeQuery(
-					"select player_id from " + DATABASE + ".`" + TABLE_PREFIX + "clans_assignment` WHERE clan_id='" + pClanID + "'");
+					"select player_id from `" + DATABASE + "`.`" + TABLE_PREFIX + "clans_assignment` WHERE clan_id='" + pClanID + "'");
 			while (rs.next()) {
 				members.add(rs.getInt("player_id"));
 			}
@@ -224,7 +224,7 @@ public class ClanConnection extends SQLCommunication {
 		Statement stmt = null;
 		try {
 			rs = (stmt = con.createStatement())
-					.executeQuery("select clan_tag from " + DATABASE + ".`" + TABLE_PREFIX + "clan` WHERE id='" + pClanID + "' LIMIT 1");
+					.executeQuery("select clan_tag from `" + DATABASE + "`.`" + TABLE_PREFIX + "clan` WHERE id='" + pClanID + "' LIMIT 1");
 			if (rs.next())
 				return rs.getString("clan_tag");
 		} catch (SQLException e) {
@@ -240,8 +240,8 @@ public class ClanConnection extends SQLCommunication {
 		ResultSet rs = null;
 		Statement stmt = null;
 		try {
-			rs = (stmt = con.createStatement()).executeQuery("select clan_id from " + DATABASE
-					+ ".`" + TABLE_PREFIX + "clans_assignment` WHERE player_id='" + pPlayerID + "' LIMIT 1");
+			rs = (stmt = con.createStatement()).executeQuery("select clan_id from `" + DATABASE
+					+ "`.`" + TABLE_PREFIX + "clans_assignment` WHERE player_id='" + pPlayerID + "' LIMIT 1");
 			if (rs.next()) {
 				return rs.getInt("clan_id");
 			}
