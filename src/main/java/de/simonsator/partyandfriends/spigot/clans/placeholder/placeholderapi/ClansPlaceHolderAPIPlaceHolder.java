@@ -5,8 +5,6 @@ import me.clip.placeholderapi.external.EZPlaceholderHook;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
 
-import java.util.regex.Pattern;
-
 /**
  * @author simonbrungs
  * @version 1.0.0 10.05.17
