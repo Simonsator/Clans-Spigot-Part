@@ -8,11 +8,11 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
 
-public class ClanTagChangedEvent extends Event {
+public class ClanTagOfPlayerChangedEvent extends Event {
 	private static final HandlerList handlers = new HandlerList();
 	private final Player PLAYER;
 
-	public ClanTagChangedEvent(Player pPlayer) {
+	public ClanTagOfPlayerChangedEvent(Player pPlayer) {
 		PLAYER = pPlayer;
 	}
 
