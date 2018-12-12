@@ -6,6 +6,9 @@ import de.simonsator.partyandfriends.spigot.api.pafplayers.PAFPlayer;
 import de.simonsator.partyandfriends.spigot.api.pafplayers.PAFPlayerManager;
 import de.simonsator.partyandfriends.spigot.clans.api.Clan;
 import de.simonsator.partyandfriends.spigot.clans.api.ClansManager;
+import de.simonsator.partyandfriends.spigot.clans.api.event.ClanTagChangedEvent;
+import de.simonsator.partyandfriends.spigot.clans.api.event.PlayerJoinedClanEvent;
+import de.simonsator.partyandfriends.spigot.clans.api.event.PlayerLeftClanEvent;
 import de.simonsator.partyandfriends.spigot.clans.clans.clansmanager.MySQLClansManager;
 import de.simonsator.partyandfriends.spigot.clans.placeholder.mvdw.ClansPlaceHolderCustomDesign;
 import de.simonsator.partyandfriends.spigot.clans.placeholder.mvdw.ClansPlaceHolderDefault;
@@ -119,12 +122,15 @@ public class ClansMainSpigot extends JavaPlugin implements Listener, PluginMessa
 			return;
 		switch (pReceived.get("task").getAsString()) {
 			case "InformAboutNewClan":
+				Bukkit.getServer().getPluginManager().callEvent(new PlayerJoinedClanEvent(player));
 				addClanTag(player);
 				break;
 			case "InformAboutClanLeave":
+				Bukkit.getServer().getPluginManager().callEvent(new PlayerLeftClanEvent(player));
 				setOriginalDisplayName(player);
 				break;
 			case "InformAboutClanTagChange":
+				Bukkit.getServer().getPluginManager().callEvent(new ClanTagChangedEvent(player));
 				setOriginalDisplayName(player);
 				addClanTag(player);
 				break;
