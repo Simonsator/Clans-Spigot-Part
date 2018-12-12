@@ -5,7 +5,6 @@ import me.clip.placeholderapi.external.EZPlaceholderHook;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
 
-import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
@@ -15,13 +14,13 @@ import java.util.regex.Pattern;
 public class ClansPlaceHolderAPIPlaceHolder extends EZPlaceholderHook {
 	private ClansPlaceHolder clanTagProvider = new ClansPlaceHolder() {
 	};
-	private final Matcher CLAN_MATCHER;
+	private final String CUSTOM_CLAN_TAG;
 	private final String ON_EMPTY;
 
 	public ClansPlaceHolderAPIPlaceHolder(Plugin pPlugin) {
 		super(pPlugin, "clantagprovider");
 		hook();
-		CLAN_MATCHER = Pattern.compile("[%CLAN_TAG%]", Pattern.LITERAL).matcher(pPlugin.getConfig().getString("PlaceholderCustomDesign.Placeholder"));
+		CUSTOM_CLAN_TAG = pPlugin.getConfig().getString("PlaceholderCustomDesign.Placeholder");
 		ON_EMPTY = pPlugin.getConfig().getString("PlaceholderCustomDesign.OnEmpty");
 	}
 
@@ -35,7 +34,7 @@ public class ClansPlaceHolderAPIPlaceHolder extends EZPlaceholderHook {
 			case "clantag_custom_design":
 				String clanTag = clanTagProvider.getClanTag(pPlayer.getName());
 				if (!clanTag.isEmpty())
-					return CLAN_MATCHER.replaceFirst(clanTag);
+					return CUSTOM_CLAN_TAG.replace("[%CLAN_TAG%]", clanTag);
 				return ON_EMPTY;
 			default:
 				return null;
