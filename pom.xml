@@ -9,12 +9,8 @@
 	<version>1.0.14</version>
 	<repositories>
 		<repository>
-			<id>spigot-repo</id>
-			<url>https://hub.spigotmc.org/nexus/content/repositories/snapshots/</url>
-		</repository>
-		<repository>
-			<id>ghac Repo</id>
-			<url>http://nexus.ghac.de/content/repositories/snapshots/</url>
+			<id>Spigot Repo</id>
+			<url>http://repo.md-5.net/content/groups/public/</url>
 		</repository>
 		<repository>
 			<id>simonsators-repo</id>

@@ -41,7 +41,7 @@ public class ClansMainSpigot extends JavaPlugin implements Listener, PluginMessa
 	private static ClansMainSpigot instance;
 	private String newDisplayName;
 	private HashMap<UUID, String> originalDisplayNames = new HashMap<>();
-	private static final String CHANNEL = "partyandfriends:gui";
+	private static final String CHANNEL = "paf:gui";
 	private final Gson GSON = new Gson();
 	private final Pattern CLAN_PATTERN = Pattern.compile("[%CLAN_TAG%]", Pattern.LITERAL);
 	private final Pattern PLAYER_DISPLAY_NAME_PATTERN = Pattern.compile("[%PLAYER_DISPLAY_NAME%]", Pattern.LITERAL);
