@@ -61,7 +61,7 @@ public class ClansMainSpigot extends JavaPlugin implements Listener, PluginMessa
 			new ClansPlaceHolderCustomDesign(this);
 		}
 		if (Bukkit.getPluginManager().isPluginEnabled("PlaceholderAPI"))
-			new ClansPlaceHolderAPIPlaceHolder(this).hook();
+			new ClansPlaceHolderAPIPlaceHolder(this).register();
 		if (!getConfig().getBoolean("API-Only")) {
 			newDisplayName = getConfig().getString("new-display-name");
 			getServer().getPluginManager().registerEvents(this, this);
