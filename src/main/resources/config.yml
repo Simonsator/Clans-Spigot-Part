@@ -3,3 +3,6 @@ new-display-name: '&e<[%CLAN_TAG%]> [%PLAYER_DISPLAY_NAME%]&r'
 PlaceholderCustomDesign:
   Placeholder: '&e<[%CLAN_TAG%]> '
   OnEmpty: ''
+  ClanName:
+    Placeholder: '&e<[%CLAN_NAME%]> '
+    OnEmpty: ''

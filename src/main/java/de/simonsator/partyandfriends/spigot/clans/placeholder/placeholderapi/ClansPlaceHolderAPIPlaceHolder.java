@@ -10,14 +10,20 @@ import org.bukkit.plugin.Plugin;
  * @version 1.0.0 10.05.17
  */
 public class ClansPlaceHolderAPIPlaceHolder extends PlaceholderExpansion {
+	private final String ON_EMPTY_CLAN_NAME;
 	private ClansPlaceHolder clanTagProvider = new ClansPlaceHolder() {
 	};
 	private final String CUSTOM_CLAN_TAG;
+	private final String CUSTOM_CLAN_NAME;
 	private final String ON_EMPTY;
 
 	public ClansPlaceHolderAPIPlaceHolder(Plugin pPlugin) {
 		CUSTOM_CLAN_TAG = pPlugin.getConfig().getString("PlaceholderCustomDesign.Placeholder");
 		ON_EMPTY = pPlugin.getConfig().getString("PlaceholderCustomDesign.OnEmpty");
+
+		CUSTOM_CLAN_NAME = pPlugin.getConfig().getString("PlaceholderCustomDesign.ClanName.Placeholder");
+		ON_EMPTY_CLAN_NAME = pPlugin.getConfig().getString("PlaceholderCustomDesign.ClanName.OnEmpty");
+
 	}
 
 	@Override
@@ -57,6 +63,11 @@ public class ClansPlaceHolderAPIPlaceHolder extends PlaceholderExpansion {
 				if (!clanTag.isEmpty())
 					return CUSTOM_CLAN_TAG.replace("[%CLAN_TAG%]", clanTag);
 				return ON_EMPTY;
+			case "clanname":
+				String clanName = clanTagProvider.getClanName(pPlayer.getName());
+				if (!clanName.isEmpty())
+					return CUSTOM_CLAN_NAME.replace("[%CLAN_NAME%]", clanName);
+				return ON_EMPTY_CLAN_NAME;
 			default:
 				return null;
 		}

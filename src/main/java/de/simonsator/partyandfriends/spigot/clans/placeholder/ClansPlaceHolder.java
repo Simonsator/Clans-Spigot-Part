@@ -20,4 +20,13 @@ public abstract class ClansPlaceHolder {
 		}
 		return "";
 	}
+	public String getClanName(String pName) {
+		PAFPlayer player = PAFPlayerManager.getInstance().getPlayer(pName);
+		if (player != null) {
+			Clan clan = ClansManager.getInstance().getClan(player);
+			if (clan != null)
+				return clan.getClanName();
+		}
+		return "";
+	}
 }

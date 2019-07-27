@@ -10,6 +10,7 @@ import de.simonsator.partyandfriends.spigot.clans.api.event.ClanTagOfPlayerChang
 import de.simonsator.partyandfriends.spigot.clans.api.event.PlayerJoinedClanEvent;
 import de.simonsator.partyandfriends.spigot.clans.api.event.PlayerLeftClanEvent;
 import de.simonsator.partyandfriends.spigot.clans.clans.clansmanager.MySQLClansManager;
+import de.simonsator.partyandfriends.spigot.clans.placeholder.mvdw.ClanNamePlaceholderMVDW;
 import de.simonsator.partyandfriends.spigot.clans.placeholder.mvdw.ClansPlaceHolderCustomDesign;
 import de.simonsator.partyandfriends.spigot.clans.placeholder.mvdw.ClansPlaceHolderDefault;
 import de.simonsator.partyandfriends.spigot.clans.placeholder.placeholderapi.ClansPlaceHolderAPIPlaceHolder;
@@ -59,6 +60,7 @@ public class ClansMainSpigot extends JavaPlugin implements Listener, PluginMessa
 		if (Bukkit.getPluginManager().isPluginEnabled("MVdWPlaceholderAPI")) {
 			new ClansPlaceHolderDefault(this);
 			new ClansPlaceHolderCustomDesign(this);
+			new ClanNamePlaceholderMVDW(this);
 		}
 		if (Bukkit.getPluginManager().isPluginEnabled("PlaceholderAPI"))
 			new ClansPlaceHolderAPIPlaceHolder(this).register();
