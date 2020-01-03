@@ -16,10 +16,11 @@ public abstract class ClansPlaceHolder {
 		if (player != null) {
 			Clan clan = ClansManager.getInstance().getClan(player);
 			if (clan != null)
-				return clan.getClanTag();
+				return clan.getColoredClanTag();
 		}
 		return "";
 	}
+
 	public String getClanName(String pName) {
 		PAFPlayer player = PAFPlayerManager.getInstance().getPlayer(pName);
 		if (player != null) {

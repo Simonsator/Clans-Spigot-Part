@@ -15,6 +15,10 @@ public abstract class Clan {
 
 	public abstract String getClanTag();
 
+	public abstract String getClanColor();
+
+	public abstract String getColoredClanTag();
+
 	public abstract boolean isLeader(PAFPlayer pPlayer);
 
 	public abstract List<PAFPlayer> getLeaders();

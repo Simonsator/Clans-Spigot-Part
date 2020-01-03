@@ -1,11 +1,12 @@
 package de.simonsator.partyandfriends.spigot.clans.clans.clan;
 
-import de.simonsator.partyandfriends.spigot.clans.ClansMainSpigot;
-import de.simonsator.partyandfriends.spigot.clans.api.Clan;
 import de.simonsator.partyandfriends.spigot.api.pafplayers.PAFPlayer;
 import de.simonsator.partyandfriends.spigot.api.pafplayers.PAFPlayerManager;
+import de.simonsator.partyandfriends.spigot.clans.ClansMainSpigot;
+import de.simonsator.partyandfriends.spigot.clans.api.Clan;
 import de.simonsator.partyandfriends.spigot.pafplayers.manager.PAFPlayerManagerMySQL;
 import de.simonsator.partyandfriends.spigot.pafplayers.mysql.PAFPlayerMySQL;
+import net.md_5.bungee.api.ChatColor;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,6 +35,20 @@ public class MySQLClan extends Clan {
 	@Override
 	public String getClanTag() {
 		return ClansMainSpigot.getInstance().getConnection().getClanTag(CLAN_ID);
+	}
+
+	@Override
+	public String getClanColor() {
+		String clanColor = ClansMainSpigot.getInstance().getConnection().getClanColor(CLAN_ID);
+		if (clanColor == null)
+			return null;
+		return "&" + clanColor;
+	}
+
+
+	@Override
+	public String getColoredClanTag() {
+		return ChatColor.translateAlternateColorCodes('&', ClansMainSpigot.getInstance().getConnection().getColoredClanTag(CLAN_ID));
 	}
 
 	@Override

@@ -50,7 +50,7 @@ public class ClansMainSpigot extends JavaPlugin implements Listener, PluginMessa
 	@Override
 	public void onEnable() {
 		instance = this;
-		connection = new ClanConnection(Main.getInstance().getMySQLData());
+		connection = new ClanConnection(Main.getInstance().getMySQLData(), getConfig().getBoolean("UseClanColors"));
 		new MySQLClansManager(connection);
 		getConfig().options().copyDefaults(true);
 		saveConfig();
@@ -92,7 +92,7 @@ public class ClansMainSpigot extends JavaPlugin implements Listener, PluginMessa
 			if (clan != null)
 				pPlayer.setDisplayName(CLAN_PATTERN.matcher(PLAYER_DISPLAY_NAME_PATTERN.matcher(newDisplayName)
 						.replaceAll(Matcher.quoteReplacement(pPlayer.getDisplayName()))).
-						replaceAll(Matcher.quoteReplacement(clan.getClanTag())));
+						replaceAll(Matcher.quoteReplacement(clan.getColoredClanTag())));
 		}
 	}
 

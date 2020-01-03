@@ -7,12 +7,14 @@ import java.sql.*;
 import java.util.ArrayList;
 
 public class ClanConnection extends SQLCommunication {
+	private final boolean USE_CLAN_COLOR;
 	private final String TABLE_PREFIX;
 
-	public ClanConnection(MySQLData pMySQLData) {
+	public ClanConnection(MySQLData pMySQLData, boolean pUseClanColor) {
 		super(pMySQLData.DATABASE, "jdbc:mysql://" + pMySQLData.HOST + ":" + pMySQLData.PORT, pMySQLData.USERNAME,
 				pMySQLData.PASSWORD, pMySQLData.USE_SSL);
 		this.TABLE_PREFIX = pMySQLData.TABLE_PREFIX;
+		USE_CLAN_COLOR = pUseClanColor;
 	}
 
 	public boolean isInvited(int pPlayerID, int pClanID) {
@@ -31,6 +33,50 @@ public class ClanConnection extends SQLCommunication {
 			close(rs, stmt);
 		}
 		return false;
+	}
+
+	public String getColoredClanTag(int pClanID) {
+		if (!USE_CLAN_COLOR) {
+			return getClanTag(pClanID);
+		}
+		Connection con = getConnection();
+		ResultSet rs = null;
+		Statement stmt = null;
+		try {
+			rs = (stmt = con.createStatement())
+					.executeQuery("select clan_tag, clan_color from `" + DATABASE + "`.`" + TABLE_PREFIX + "clan` WHERE id='" + pClanID + "' LIMIT 1");
+			if (rs.next()) {
+				String clanTag = rs.getString("clan_tag");
+				String clanColor = rs.getString("clan_color");
+				if (clanColor == null)
+					return clanTag;
+				return "&" + clanColor + clanTag;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rs, stmt);
+		}
+		return null;
+	}
+
+	public String getClanColor(int pClanID) {
+		if (!USE_CLAN_COLOR)
+			return null;
+		Connection con = getConnection();
+		ResultSet rs = null;
+		Statement stmt = null;
+		try {
+			rs = (stmt = con.createStatement())
+					.executeQuery("select clan_color from `" + DATABASE + "`.`" + TABLE_PREFIX + "clan` WHERE id='" + pClanID + "' AND clan_color IS NOT NULL LIMIT 1");
+			if (rs.next())
+				return rs.getString("clan_color");
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rs, stmt);
+		}
+		return null;
 	}
 
 	public ArrayList<Integer> getRequests(int pPlayerID) {

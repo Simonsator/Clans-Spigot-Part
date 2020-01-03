@@ -1,8 +1,9 @@
 API-Only: false
-new-display-name: '&e<[%CLAN_TAG%]> [%PLAYER_DISPLAY_NAME%]&r'
+UseClanColors: true
+new-display-name: '&e<[%CLAN_TAG%]&e> [%PLAYER_DISPLAY_NAME%]&r'
 PlaceholderCustomDesign:
-  Placeholder: '&e<[%CLAN_TAG%]> '
+  Placeholder: '&e<[%CLAN_TAG%]&e> '
   OnEmpty: ''
   ClanName:
-    Placeholder: '&e<[%CLAN_NAME%]> '
+    Placeholder: '&e<[%CLAN_NAME%]&e> '
     OnEmpty: ''
