@@ -179,7 +179,7 @@ public class ClanConnection extends SQLCommunication {
 		Statement stmt = null;
 		try {
 			rs = (stmt = con.createStatement()).executeQuery(
-					"select player_id, type from `" + DATABASE + "`.`" + TABLE_PREFIX + "clans_assignment ` WHERE clan_id='" + pClanID + "'");
+					"select player_id, type from `" + DATABASE + "`.`" + TABLE_PREFIX + "clans_assignment` WHERE clan_id='" + pClanID + "'");
 			while (rs.next()) {
 				if (rs.getByte("type") == 0)
 					members.add(rs.getInt("player_id"));
