@@ -21,9 +21,9 @@ public class ClanNamePlaceholderMVDW extends ClansPlaceHolder implements Placeho
 
 	@Override
 	public String onPlaceholderReplace(PlaceholderReplaceEvent pEvent) {
-		String clanTag = getClanTag(pEvent.getOfflinePlayer().getName());
-		if (!clanTag.isEmpty())
-			return CLAN_MATCHER.replaceFirst(clanTag);
+		String clanName = getClanName(pEvent.getOfflinePlayer().getName());
+		if (!clanName.isEmpty())
+			return CLAN_MATCHER.replaceFirst(clanName);
 		return ON_EMPTY;
 	}
 
