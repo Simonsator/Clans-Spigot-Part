@@ -1,5 +1,6 @@
 package de.simonsator.partyandfriends.spigot.clans.placeholder.placeholderapi;
 
+import de.simonsator.partyandfriends.spigot.clans.placeholder.CachedClanPlaceHolder;
 import de.simonsator.partyandfriends.spigot.clans.placeholder.ClansPlaceHolder;
 import me.clip.placeholderapi.expansion.PlaceholderExpansion;
 import org.bukkit.entity.Player;
@@ -11,8 +12,7 @@ import org.bukkit.plugin.Plugin;
  */
 public class ClansPlaceHolderAPIPlaceHolder extends PlaceholderExpansion {
 	private final String ON_EMPTY_CLAN_NAME;
-	private ClansPlaceHolder clanTagProvider = new ClansPlaceHolder() {
-	};
+	private final ClansPlaceHolder clanTagProvider;
 	private final String CUSTOM_CLAN_TAG;
 	private final String CUSTOM_CLAN_NAME;
 	private final String ON_EMPTY;
@@ -23,7 +23,11 @@ public class ClansPlaceHolderAPIPlaceHolder extends PlaceholderExpansion {
 
 		CUSTOM_CLAN_NAME = pPlugin.getConfig().getString("PlaceholderCustomDesign.ClanName.Placeholder");
 		ON_EMPTY_CLAN_NAME = pPlugin.getConfig().getString("PlaceholderCustomDesign.ClanName.OnEmpty");
-
+		if (pPlugin.getConfig().getBoolean("UseCache")) {
+			clanTagProvider = new CachedClanPlaceHolder(pPlugin.getConfig().getInt("CacheTimeInSeconds"), pPlugin);
+		} else
+			clanTagProvider = new ClansPlaceHolder() {
+			};
 	}
 
 	@Override

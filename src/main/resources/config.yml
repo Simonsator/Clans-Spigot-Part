@@ -1,6 +1,8 @@
 API-Only: false
 UseClanColors: true
 new-display-name: '&e<[%CLAN_TAG%]&e> [%PLAYER_DISPLAY_NAME%]&r'
+UseCache: false
+CacheTimeInSeconds: 360
 PlaceholderCustomDesign:
   Placeholder: '&e<[%CLAN_TAG%]&e> '
   OnEmpty: ''
