@@ -46,6 +46,7 @@ public class ClansMainSpigot extends JavaPlugin implements Listener, PluginMessa
 	private final Gson GSON = new Gson();
 	private final Pattern CLAN_PATTERN = Pattern.compile("[%CLAN_TAG%]", Pattern.LITERAL);
 	private final Pattern PLAYER_DISPLAY_NAME_PATTERN = Pattern.compile("[%PLAYER_DISPLAY_NAME%]", Pattern.LITERAL);
+	private boolean apiOnly;
 
 	@Override
 	public void onEnable() {
@@ -64,10 +65,11 @@ public class ClansMainSpigot extends JavaPlugin implements Listener, PluginMessa
 		}
 		if (Bukkit.getPluginManager().isPluginEnabled("PlaceholderAPI"))
 			new ClansPlaceHolderAPIPlaceHolder(this).register();
-		if (!getConfig().getBoolean("API-Only")) {
+		getServer().getMessenger().registerIncomingPluginChannel(this, CHANNEL, this);
+		apiOnly = getConfig().getBoolean("API-Only");
+		if (!apiOnly) {
 			newDisplayName = getConfig().getString("new-display-name");
 			getServer().getPluginManager().registerEvents(this, this);
-			getServer().getMessenger().registerIncomingPluginChannel(this, CHANNEL, this);
 		}
 	}
 
@@ -125,16 +127,20 @@ public class ClansMainSpigot extends JavaPlugin implements Listener, PluginMessa
 		switch (pReceived.get("task").getAsString()) {
 			case "InformAboutNewClan":
 				Bukkit.getServer().getPluginManager().callEvent(new PlayerJoinedClanEvent(player));
-				addClanTag(player);
+				if (!apiOnly)
+					addClanTag(player);
 				break;
 			case "InformAboutClanLeave":
 				Bukkit.getServer().getPluginManager().callEvent(new PlayerLeftClanEvent(player));
-				setOriginalDisplayName(player);
+				if (!apiOnly)
+					setOriginalDisplayName(player);
 				break;
 			case "InformAboutClanTagChange":
 				Bukkit.getServer().getPluginManager().callEvent(new ClanTagOfPlayerChangedEvent(player));
-				setOriginalDisplayName(player);
-				addClanTag(player);
+				if (!apiOnly) {
+					setOriginalDisplayName(player);
+					addClanTag(player);
+				}
 				break;
 			default:
 				break;
