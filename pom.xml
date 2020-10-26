@@ -20,11 +20,6 @@
 			<url>http://simonsator.de/repo/</url>
 		</repository>
 		<repository>
-			<id>mvdw-software</id>
-			<name>MVdW Public Repositories</name>
-			<url>http://repo.mvdw-software.be/content/groups/public/</url>
-		</repository>
-		<repository>
 			<id>placeholderapi</id>
 			<url>http://repo.extendedclip.com/content/repositories/placeholderapi/</url>
 		</repository>
@@ -41,17 +36,19 @@
 			<artifactId>Party-and-Friends-MySQL-Edition-Spigot-API</artifactId>
 			<version>1.5.0</version>
 			<scope>provided</scope>
-		</dependency>
+            <exclusions>
+                <exclusion>
+                    <groupId>be.maximvdw</groupId>
+                    <artifactId>MVdWPlaceholderAPI</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
 		<dependency>
 			<groupId>be.maximvdw</groupId>
 			<artifactId>MVdWPlaceholderAPI</artifactId>
 			<version>2.1.1-SNAPSHOT</version>
-			<exclusions>
-				<exclusion>
-					<groupId>org.spigotmc</groupId>
-					<artifactId>spigot</artifactId>
-				</exclusion>
-			</exclusions>
+			<scope>system</scope>
+			<systemPath>${project.basedir}/src/main/resources/MVdWPlaceholderAPI.jar</systemPath>
 		</dependency>
 		<dependency>
 			<groupId>me.clip</groupId>
