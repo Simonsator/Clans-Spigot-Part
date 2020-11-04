@@ -36,19 +36,19 @@
 			<artifactId>Party-and-Friends-MySQL-Edition-Spigot-API</artifactId>
 			<version>1.5.0</version>
 			<scope>provided</scope>
-            <exclusions>
-                <exclusion>
-                    <groupId>be.maximvdw</groupId>
-                    <artifactId>MVdWPlaceholderAPI</artifactId>
-                </exclusion>
-            </exclusions>
-        </dependency>
+			<exclusions>
+				<exclusion>
+					<groupId>be.maximvdw</groupId>
+					<artifactId>MVdWPlaceholderAPI</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
 		<dependency>
 			<groupId>be.maximvdw</groupId>
 			<artifactId>MVdWPlaceholderAPI</artifactId>
 			<version>2.1.1-SNAPSHOT</version>
 			<scope>system</scope>
-			<systemPath>${project.basedir}/src/main/resources/MVdWPlaceholderAPI.jar</systemPath>
+			<systemPath>${project.basedir}/non-maven-dependencies/MVdWPlaceholderAPI.jar</systemPath>
 		</dependency>
 		<dependency>
 			<groupId>me.clip</groupId>
