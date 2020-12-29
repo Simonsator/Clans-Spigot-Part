@@ -60,6 +60,31 @@ public class ClanConnection extends SQLCommunication {
 		return null;
 	}
 
+	public String getColoredClanName(int pClanID) {
+		if (!USE_CLAN_COLOR) {
+			return getClanNameByID(pClanID);
+		}
+		Connection con = getConnection();
+		ResultSet rs = null;
+		Statement stmt = null;
+		try {
+			rs = (stmt = con.createStatement())
+					.executeQuery("select clan_color, clan_name from `" + DATABASE + "`.`" + TABLE_PREFIX + "clan` WHERE id='" + pClanID + "' LIMIT 1");
+			if (rs.next()) {
+				String clanTag = rs.getString("clan_name");
+				String clanColor = rs.getString("clan_color");
+				if (clanColor == null)
+					return clanTag;
+				return "&" + clanColor + clanTag;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rs, stmt);
+		}
+		return null;
+	}
+
 	public String getClanColor(int pClanID) {
 		if (!USE_CLAN_COLOR)
 			return null;

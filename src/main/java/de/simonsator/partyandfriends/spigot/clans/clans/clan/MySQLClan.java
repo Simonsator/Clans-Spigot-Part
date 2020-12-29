@@ -52,6 +52,11 @@ public class MySQLClan extends Clan {
 	}
 
 	@Override
+	public String getColoredClanName() {
+		return ChatColor.translateAlternateColorCodes('&', ClansMainSpigot.getInstance().getConnection().getColoredClanName(CLAN_ID));
+	}
+
+	@Override
 	public boolean isLeader(PAFPlayer pPlayer) {
 		return ClansMainSpigot.getInstance().getConnection().isLeader(((PAFPlayerMySQL) pPlayer.getPAFPlayer()).getPlayerID(), CLAN_ID);
 	}

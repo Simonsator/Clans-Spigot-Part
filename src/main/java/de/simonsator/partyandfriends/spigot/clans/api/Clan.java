@@ -11,6 +11,8 @@ import java.util.List;
 public abstract class Clan {
 	public abstract List<PAFPlayer> getAllPlayers();
 
+	public abstract String getColoredClanName();
+
 	public abstract String getClanName();
 
 	public abstract String getClanTag();
