@@ -16,7 +16,7 @@ import java.util.List;
  * @version 1.0.0 on 24.06.2016
  */
 public class MySQLClan extends Clan {
-	private final int CLAN_ID;
+	public final int CLAN_ID;
 
 	public MySQLClan(int pClanID) {
 		CLAN_ID = pClanID;
