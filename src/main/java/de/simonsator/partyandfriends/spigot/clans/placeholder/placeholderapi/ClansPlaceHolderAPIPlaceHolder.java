@@ -77,6 +77,8 @@ public class ClansPlaceHolderAPIPlaceHolder extends PlaceholderExpansion {
 				if (!coloredClanName.isEmpty())
 					return CUSTOM_CLAN_NAME.replace("[%CLAN_NAME%]", coloredClanName);
 				return ON_EMPTY_CLAN_NAME;
+			case "clan_color":
+				return clanTagProvider.getClanColor(pPlayer.getName());
 			default:
 				return null;
 		}
