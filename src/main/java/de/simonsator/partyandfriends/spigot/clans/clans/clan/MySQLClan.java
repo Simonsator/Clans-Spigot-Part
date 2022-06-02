@@ -39,10 +39,7 @@ public class MySQLClan extends Clan {
 
 	@Override
 	public String getClanColor() {
-		String clanColor = ClansMainSpigot.getInstance().getConnection().getClanColor(CLAN_ID);
-		if (clanColor == null)
-			return null;
-		return "&" + clanColor;
+		return ClansMainSpigot.getInstance().getConnection().getClanColor(CLAN_ID);
 	}
 
 
