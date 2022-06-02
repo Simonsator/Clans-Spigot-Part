@@ -10,9 +10,6 @@ import de.simonsator.partyandfriends.spigot.clans.api.event.ClanTagOfPlayerChang
 import de.simonsator.partyandfriends.spigot.clans.api.event.PlayerJoinedClanEvent;
 import de.simonsator.partyandfriends.spigot.clans.api.event.PlayerLeftClanEvent;
 import de.simonsator.partyandfriends.spigot.clans.clans.clansmanager.MySQLClansManager;
-import de.simonsator.partyandfriends.spigot.clans.placeholder.mvdw.ClanNamePlaceholderMVDW;
-import de.simonsator.partyandfriends.spigot.clans.placeholder.mvdw.ClansPlaceHolderCustomDesign;
-import de.simonsator.partyandfriends.spigot.clans.placeholder.mvdw.ClansPlaceHolderDefault;
 import de.simonsator.partyandfriends.spigot.clans.placeholder.placeholderapi.ClansPlaceHolderAPIPlaceHolder;
 import de.simonsator.partyandfriends.spigot.main.Main;
 import org.bukkit.Bukkit;
@@ -58,11 +55,6 @@ public class ClansMainSpigot extends JavaPlugin implements Listener, PluginMessa
 		for (String path : getConfig().getKeys(true))
 			if (getConfig().isString(path))
 				getConfig().set(path, ChatColor.translateAlternateColorCodes('&', getConfig().getString(path)));
-		if (Bukkit.getPluginManager().isPluginEnabled("MVdWPlaceholderAPI")) {
-			new ClansPlaceHolderDefault(this);
-			new ClansPlaceHolderCustomDesign(this);
-			new ClanNamePlaceholderMVDW(this);
-		}
 		if (Bukkit.getPluginManager().isPluginEnabled("PlaceholderAPI"))
 			new ClansPlaceHolderAPIPlaceHolder(this).register();
 		getServer().getMessenger().registerIncomingPluginChannel(this, CHANNEL, this);
