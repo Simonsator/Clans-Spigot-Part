@@ -1,5 +1,6 @@
 API-Only: false
 UseClanColors: true
+AlwaysUpperCaseClanTag: false
 new-display-name: '&e<[%CLAN_TAG%]&e> [%PLAYER_DISPLAY_NAME%]&r'
 UseCache: false
 CacheTimeInSeconds: 360

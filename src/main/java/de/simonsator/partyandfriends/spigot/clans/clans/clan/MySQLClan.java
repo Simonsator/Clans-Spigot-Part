@@ -34,7 +34,10 @@ public class MySQLClan extends Clan {
 
 	@Override
 	public String getClanTag() {
-		return ClansMainSpigot.getInstance().getConnection().getClanTag(CLAN_ID);
+		String clanTag = ClansMainSpigot.getInstance().getConnection().getClanTag(CLAN_ID);
+		if (upperCaseTag)
+			return clanTag.toUpperCase();
+		return clanTag;
 	}
 
 	@Override
@@ -45,7 +48,10 @@ public class MySQLClan extends Clan {
 
 	@Override
 	public String getColoredClanTag() {
-		return ChatColor.translateAlternateColorCodes('&', ClansMainSpigot.getInstance().getConnection().getColoredClanTag(CLAN_ID));
+		String clanTag = ChatColor.translateAlternateColorCodes('&', ClansMainSpigot.getInstance().getConnection().getColoredClanTag(CLAN_ID));
+		if (upperCaseTag)
+			return clanTag.toUpperCase();
+		return clanTag;
 	}
 
 	@Override

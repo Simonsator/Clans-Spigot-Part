@@ -9,6 +9,17 @@ import java.util.List;
  * @version 1.0.0 on 24.06.2016
  */
 public abstract class Clan {
+	protected static boolean upperCaseTag = false;
+
+	/**
+	 * Sets if the clan tag should be always upper case
+	 *
+	 * @param pUpperCaseTag True if the clan tag should be always upper case
+	 */
+	public static void setAlwaysUpperCaseClanTag(boolean pUpperCaseTag) {
+		upperCaseTag = pUpperCaseTag;
+	}
+
 	public abstract List<PAFPlayer> getAllPlayers();
 
 	public abstract String getColoredClanName();

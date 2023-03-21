@@ -52,11 +52,15 @@ public class ClansMainSpigot extends JavaPlugin implements Listener, PluginMessa
 		new MySQLClansManager(connection);
 		getConfig().options().copyDefaults(true);
 		saveConfig();
-		for (String path : getConfig().getKeys(true))
-			if (getConfig().isString(path))
+		for (String path : getConfig().getKeys(true)) {
+			if (getConfig().isString(path)) {
 				getConfig().set(path, ChatColor.translateAlternateColorCodes('&', getConfig().getString(path)));
-		if (Bukkit.getPluginManager().isPluginEnabled("PlaceholderAPI"))
+			}
+		}
+		if (Bukkit.getPluginManager().isPluginEnabled("PlaceholderAPI")) {
 			new ClansPlaceHolderAPIPlaceHolder(this).register();
+		}
+		Clan.setAlwaysUpperCaseClanTag(getConfig().getBoolean("AlwaysUpperCaseClanTag"));
 		getServer().getMessenger().registerIncomingPluginChannel(this, CHANNEL, this);
 		apiOnly = getConfig().getBoolean("API-Only");
 		if (!apiOnly) {
