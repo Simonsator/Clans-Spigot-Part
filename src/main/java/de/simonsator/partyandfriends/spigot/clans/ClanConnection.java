@@ -11,7 +11,7 @@ public class ClanConnection extends SQLCommunication {
 	private final String TABLE_PREFIX;
 
 	public ClanConnection(MySQLData pMySQLData, boolean pUseClanColor) {
-		super(pMySQLData.DATABASE, "jdbc:mysql://" + pMySQLData.HOST + ":" + pMySQLData.PORT, pMySQLData.USERNAME,
+		super(pMySQLData.DATABASE, pMySQLData.DRIVER_URL + pMySQLData.HOST + ":" + pMySQLData.PORT, pMySQLData.USERNAME,
 				pMySQLData.PASSWORD, pMySQLData.USE_SSL);
 		this.TABLE_PREFIX = pMySQLData.TABLE_PREFIX;
 		USE_CLAN_COLOR = pUseClanColor;
